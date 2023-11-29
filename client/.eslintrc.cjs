@@ -21,7 +21,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    'prettier/prettier': ['error'],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'comma-dangle': 'off',
     semi: ['error', 'always'],
     'space-before-function-paren': ['error', 'never'],
