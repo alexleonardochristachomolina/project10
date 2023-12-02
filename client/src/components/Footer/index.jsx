@@ -1,5 +1,5 @@
 import logo from '../../assets/logo-symbol.svg';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FacebookIcon,
   InstagramIcon,
@@ -11,6 +11,11 @@ import { ExpandLessIcon } from '../../assets/control-icons';
 import { FlagEnglishIcon } from '../../assets/flag-icons';
 
 const Footer = () => {
+  const [isMenuLanguageVisible, setMenuLanguageVisible] = useState(false);
+
+  const toggleMenuLanguage = () => {
+    setMenuLanguageVisible(!isMenuLanguageVisible);
+  };
   return (
     <footer className="text-gray-600 body-font">
       <div className="container p-4 py-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
@@ -128,10 +133,17 @@ const Footer = () => {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-gray-500 hover:text-gray-800">Login</a>
+                <a className="text-gray-500 hover:text-gray-800" href="/login">
+                  Login
+                </a>
               </li>
               <li>
-                <a className="text-gray-500 hover:text-gray-800">Register</a>
+                <a
+                  className="text-gray-500 hover:text-gray-800"
+                  href="/register"
+                >
+                  Register
+                </a>
               </li>
               <li>
                 <a className="text-gray-500 hover:text-gray-800" href="#">
@@ -139,7 +151,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className="text-gray-500 hover:text-gray-800" href="#">
+                <a className="text-gray-500 hover:text-gray-800" href="/cart">
                   My Orders
                 </a>
               </li>
@@ -156,9 +168,47 @@ const Footer = () => {
             <FlagEnglishIcon />
             <span className="self-center">English</span>
             <div className="relative self-center">
-              <button className="text-gray-800 rounded focus:outline-none">
+              <button
+                className="text-gray-800 rounded focus:outline-none"
+                onClick={toggleMenuLanguage}
+              >
                 <ExpandLessIcon />
               </button>
+              <div
+                className={`${
+                  isMenuLanguageVisible ? 'block' : 'hidden'
+                } absolute bottom-8 right-0 mt-8 bg-white border border-gray-300 rounded shadow-md`}
+              >
+                <ul className="py-2 px-4">
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-500 hover:text-gray-800"
+                      onClick={toggleMenuLanguage}
+                    >
+                      English
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-500 hover:text-gray-800"
+                      onClick={toggleMenuLanguage}
+                    >
+                      Spanish
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-500 hover:text-gray-800"
+                      onClick={toggleMenuLanguage}
+                    >
+                      Portuguese
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </span>
         </div>
