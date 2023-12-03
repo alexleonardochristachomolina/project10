@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import { FullWithLayout } from '../hocs/layouts/FullWithLayout';
+
 const Home = lazy(() => import('../pages/Home'));
 const Products = lazy(() => import('../pages/Products'));
 const ProductDetails = lazy(() => import('../pages/ProductDetails'));
@@ -12,13 +14,15 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
-      <Route path="products" element={<Products />} />
-      <Route path="products/:id" element={<ProductDetails />} />
-      <Route path="cart" element={<Cart />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<FullWithLayout />}>
+        <Route index element={<Home />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/:id" element={<ProductDetails />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   );
 };
