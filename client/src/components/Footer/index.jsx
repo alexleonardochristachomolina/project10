@@ -1,4 +1,3 @@
-import logo from '../../assets/logo-symbol.svg';
 import React, { useState } from 'react';
 import {
   FacebookIcon,
@@ -9,6 +8,7 @@ import {
 } from '../../assets/social-icons';
 import { ExpandLessIcon } from '../../assets/control-icons';
 import { FlagEnglishIcon } from '../../assets/flag-icons';
+import Logo from '../Logo';
 
 const Footer = () => {
   const [isMenuLanguageVisible, setMenuLanguageVisible] = useState(false);
@@ -21,8 +21,7 @@ const Footer = () => {
       <div className="container p-4 py-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <img src={logo} alt="logo" />
-            <h1 className="font-bold text-2xl text-blue-400">Brand</h1>
+            <Logo />
           </a>
           <p className="mt-2 mb-2 text-sm text-gray-600">
             Best information about the company gies here but now lorem ipsum is
