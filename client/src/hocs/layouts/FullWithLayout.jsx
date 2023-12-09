@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 
 export const FullWithLayout = () => {
   return (
-    <div>
+    <div className="bg-[#F7FAFC]">
       <Header />
       <Outlet />
       <Footer />
