@@ -6,7 +6,7 @@ import SliderHome from '../../components/Slider';
 
 export const FullWithLayout = () => {
   return (
-    <div>
+    <div className="bg-[#F7FAFC]">
       <Header />
       <SliderHome />
       <Outlet />
