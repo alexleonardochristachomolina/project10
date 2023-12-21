@@ -27,26 +27,31 @@ export const DiscountOffersSection = () => {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
+      id: 1,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
+      id: 2,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
+      id: 3,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
+      id: 4,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
+      id: 5,
     },
   ];
 
@@ -70,7 +75,7 @@ export const DiscountOffersSection = () => {
       <div className="flex">
         {offers.map((offer) => (
           <div
-            key={offer.title}
+            key={offer.id}
             className="px-[1.25rem] py-[0.5rem] border h-full flex flex-col items-center gap-3"
           >
             <img
