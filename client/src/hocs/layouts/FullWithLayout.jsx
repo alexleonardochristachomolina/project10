@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import SliderHome from '../../components/Slider';
+import SliderHome from '../../components/Home/Slider';
 import Navbar from '../../components/Navbar';
 
 export const FullWithLayout = () => {
