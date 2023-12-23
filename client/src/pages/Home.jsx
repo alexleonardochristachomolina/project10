@@ -4,6 +4,7 @@ import SliderHome from '../components/Home/SliderHome';
 import SectionRecomendados from '../components/Home/SectionRecomendados';
 import { CategoriesSection } from '../components/Home/CategoriesSection';
 import { SavedOrLatherSection } from '../components/SavedOrLatherSection/SavedOrLatherSection';
+import { SecondCategories } from '../components/Home/SecondCategories';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <SectionRecomendados />
       <SavedOrLatherSection />
       <CategoriesSection />
+      <SecondCategories />
     </div>
   );
 };
