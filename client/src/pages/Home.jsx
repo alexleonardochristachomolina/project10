@@ -3,6 +3,7 @@ import { DiscountOffersSection } from '../components/Home/DiscountOffersSection'
 import SliderHome from '../components/Home/SliderHome';
 import SectionRecomendados from '../components/Home/SectionRecomendados';
 import { CategoriesSection } from '../components/Home/CategoriesSection';
+import { SavedOrLatherSection } from '../components/SavedOrLatherSection/SavedOrLatherSection';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <SliderHome />
       <DiscountOffersSection />
       <SectionRecomendados />
+      <SavedOrLatherSection />
       <CategoriesSection />
     </div>
   );
