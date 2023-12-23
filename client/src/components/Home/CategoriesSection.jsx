@@ -71,7 +71,7 @@ export const CategoriesSection = () => {
         {categories.map((category) => (
           <div
             key={category.id}
-            className="px-[1.25rem] py-[0.5rem] border h-full flex gap-3 justify-between items-end"
+            className="bg-white px-[1.25rem] py-[0.5rem] border h-full flex gap-3 justify-between items-end hover:scale-105 transition-transform cursor-pointer"
           >
             <div className="h-full">
               <h3>{category.category}</h3>
