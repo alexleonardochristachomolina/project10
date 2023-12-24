@@ -1,7 +1,8 @@
+import React from 'react';
 export const Categories = () => {
   const categories = [];
   const AddCategory = (category, href = '#') => {
-    categories.push({ id: categories.length, category: category, href: href });
+    categories.push({ id: categories.length, category, href });
   };
 
   AddCategory('Mobile accesory');

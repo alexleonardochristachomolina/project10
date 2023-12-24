@@ -1,25 +1,25 @@
 /*? Estilos para navegadores basados en Chromium */
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: #0D6EFD;
-    border-radius: 50%;
-    height: 1.25rem;
-    width: 1.25rem;
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #0d6efd;
+  border-radius: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
 }
 
 /*? Estilos para Firefox  */
-input[type=range]::-moz-range-thumb {
-    border-radius: 50%;
-    height: 1.25rem;
-    width: 1.25rem;
-    background-color: #0D6EFD;
-    border: none;
+input[type='range']::-moz-range-thumb {
+  border-radius: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: #0d6efd;
+  border: none;
 }
 
-input[type="range"]::-moz-range-progress {
-    /*? Color del rango seleccionado */
-    background-color: #0D6EFD;
-    border: none;
-    height: 100%;
-    border-radius: 5px;
+input[type='range']::-moz-range-progress {
+  /*? Color del rango seleccionado */
+  background-color: #0d6efd;
+  border: none;
+  height: 100%;
+  border-radius: 5px;
 }

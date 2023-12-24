@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FilterBar } from '../PriceRange/index.jsx';
 import { Categories } from './Categories.jsx';
 import { ExpandLessIcon } from '../../assets/control-icons/index.jsx';
 
-export const SidebarFilter = ({ min = 0, max = 1500 }) => {
+const SidebarFilter = ({ min = 0, max = 1500 }) => {
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
 
@@ -53,3 +54,10 @@ export const SidebarFilter = ({ min = 0, max = 1500 }) => {
     </>
   );
 };
+
+SidebarFilter.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+};
+
+export default SidebarFilter;
