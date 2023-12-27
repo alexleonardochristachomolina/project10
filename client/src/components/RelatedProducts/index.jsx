@@ -3,14 +3,14 @@ import React from 'react';
 export const RelatedProducts = () => {
   const products = Array(6);
 
-  //TODO: Agregar src y href
+  // TODO: Agregar src y href
   products.fill({
     name: 'Xiaomi Redmi 8 Original',
     price: '$32.00-$40.00',
     src: null,
     href: null,
   });
-  //TODO: Agregar el resto de productos con su respectiva informacion
+  // TODO: Agregar el resto de productos con su respectiva informacion
 
   return (
     <>
