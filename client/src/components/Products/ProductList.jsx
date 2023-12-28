@@ -22,7 +22,8 @@ const ProductList = () => {
         </div>
         <div className="flex items-center gap-[10px]">
           <div className="flex items-center gap-[10px]">
-            <input type="checkbox" /> <span>Verified only</span>
+            <input type="checkbox" className="cursor-pointer" />{' '}
+            <span>Verified only</span>
           </div>
           <select
             name="featured"
@@ -36,8 +37,12 @@ const ProductList = () => {
             <option value="toprated">Top Rated</option>
           </select>
           <div className="flex">
-            <ButtonIconGroup />
-            <ButtonIconList />
+            <div className="w-[38px] h-10 bg-[#EFF2F4] grid place-items-center border border-[#DEE2E7] rounded-l-md cursor-pointer">
+              <ButtonIconGroup />
+            </div>
+            <div className="w-[38px] h-10 bg-white grid place-items-center border border-[#DEE2E7] rounded-r-md cursor-pointer">
+              <ButtonIconList />
+            </div>
           </div>
         </div>
       </div>
@@ -49,7 +54,9 @@ const ProductList = () => {
             </span>
           </div>
         ))}
-        <span className="text-[#0D6EFD]">Clear all filter</span>
+        <span className="text-[#0D6EFD] cursor-pointer hover:underline">
+          Clear all filter
+        </span>
       </div>
       <div>Cards</div>
     </div>
