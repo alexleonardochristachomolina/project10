@@ -33,54 +33,31 @@ export const ExpandMoreIcon = () => (
 
 export const ButtonIconGroup = () => (
   <svg
-    width="38"
-    height="40"
-    viewBox="0 0 38 40"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
   >
-    <g id="Button/btn-group">
-      <path
-        id="&#226;&#151;&#188;&#239;&#184;&#143; Background"
-        d="M0.5 6C0.5 2.96243 2.96243 0.5 6 0.5H37.5V39.5H6C2.96243 39.5 0.5 37.0376 0.5 34V6Z"
-        fill="#EFF2F4"
-        stroke="#DEE2E7"
-      />
-      <g id="Icon/control/gridview">
-        <g id="Vector">
-          <path d="M18 11H10V19H18V11Z" fill="#1C1C1C" />
-          <path d="M18 21H10V29H18V21Z" fill="#1C1C1C" />
-          <path d="M28 11H20V19H28V11Z" fill="#1C1C1C" />
-          <path d="M28 21H20V29H28V21Z" fill="#1C1C1C" />
-        </g>
-      </g>
-    </g>
+    <path d="M8 0H0V8H8V0Z" fill="#1C1C1C" />
+    <path d="M8 10H0V18H8V10Z" fill="#1C1C1C" />
+    <path d="M18 0H10V8H18V0Z" fill="#1C1C1C" />
+    <path d="M18 10H10V18H18V10Z" fill="#1C1C1C" />
   </svg>
 );
 
 export const ButtonIconList = () => (
   <svg
-    width="38"
-    height="40"
-    viewBox="0 0 38 40"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
   >
-    <g id="Button/btn-group">
-      <path
-        id="&#226;&#151;&#188;&#239;&#184;&#143; Background"
-        d="M0.5 0.5H32C35.0376 0.5 37.5 2.96243 37.5 6V34C37.5 37.0376 35.0376 39.5 32 39.5H0.5V0.5Z"
-        fill="white"
-        stroke="#DEE2E7"
-      />
-      <g id="Icon/control/listview">
-        <path
-          id="Vector"
-          d="M28 16H10V12H28V16ZM28 18H10V22H28V18ZM28 24H10V28H28V24Z"
-          fill="#1C1C1C"
-        />
-      </g>
-    </g>
+    <path
+      d="M21 8H3V4H21V8ZM21 10H3V14H21V10ZM21 16H3V20H21V16Z"
+      fill="#1C1C1C"
+    />
   </svg>
 );
 
