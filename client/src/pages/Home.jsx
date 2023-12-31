@@ -11,7 +11,6 @@ const Home = () => {
     <div className="container max-w-7xl mx-auto flex flex-col gap-5">
       <DiscountOffersSection />
       <SectionRecomendados />
-      <SavedOrLatherSection />
       <SellerInformationPanel />
       <CategoriesSection />
       <SecondCategories />
