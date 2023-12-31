@@ -9,13 +9,12 @@ import { SellerInformationPanel } from '../components/SellerInformationPanel/Sel
 const Home = () => {
   return (
     <div className="container max-w-7xl mx-auto flex flex-col gap-5">
+      <SliderHome />
       <DiscountOffersSection />
       <SectionRecomendados />
       <SellerInformationPanel />
       <CategoriesSection />
       <SecondCategories />
-      <SliderHome />
-      <SectionRecomendados />
     </div>
   );
 };
