@@ -6,6 +6,8 @@ import {
 } from '../../assets/control-icons';
 import useStore from '../../utils/store';
 import { ProductCard } from './ProductCard';
+import { Pagination } from '../Pagination';
+import { SelectBox } from '../SelectBox';
 
 const ProductList = () => {
   const { products, fetchProducts } = useStore();
@@ -21,7 +23,7 @@ const ProductList = () => {
     fetchProducts();
   }, [fetchProducts]);
   return (
-    <div className="flex flex-col gap-5 w-full">
+    <div className="flex flex-col gap-5 mb-12">
       <div className="flex items-center justify-between bg-white border border-[#DEE2E7] rounded-[6px] p-[10px]">
         <div>
           <span>12,911 items in Mobile accessory</span>
@@ -68,6 +70,12 @@ const ProductList = () => {
         {products?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
+      </div>
+      <div className="flex justify-end">
+        <div className="flex gap-3">
+          <SelectBox />
+          <Pagination />
+        </div>
       </div>
     </div>
   );

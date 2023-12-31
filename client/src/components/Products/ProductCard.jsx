@@ -22,13 +22,13 @@ export const ProductCard = ({ product }) => {
           <span className="text-[18px] font-semibold">
             ${price} <span className="text-[#8B96A5] text-base">$1128.00</span>
           </span>
-          <div className="text-[#FF9017] flex gap-1">
+          <div className="text-[#FF9017] flex gap-1 my-1">
             <div className="flex">
-              <StarIcon />
-              <StarIcon />
-              <StarHalfIcon />
-              <StarBorderIcon />
-              <StarBorderIcon />
+              <StarIcon className="p-[2px]" />
+              <StarIcon className="p-[2px]" />
+              <StarHalfIcon className="p-[2px]" />
+              <StarBorderIcon className="p-[2px]" />
+              <StarBorderIcon className="p-[2px]" />
             </div>
             7.5
           </div>
