@@ -47,10 +47,11 @@ export const ProductCard = ({ product }) => {
 };
 
 ProductCard.propTypes = {
-  product: PropTypes.array,
-  id: PropTypes.number,
-  image: PropTypes.array,
-  price: PropTypes.number,
-  band: PropTypes.string,
-  model: PropTypes.string,
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.array,
+    price: PropTypes.number,
+    brand: PropTypes.string,
+    model: PropTypes.string,
+  }),
 };
