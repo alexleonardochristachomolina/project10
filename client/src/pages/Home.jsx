@@ -4,17 +4,15 @@ import SliderHome from '../components/Home/SliderHome';
 import SectionRecomendados from '../components/Home/SectionRecomendados';
 import { CategoriesSection } from '../components/Home/CategoriesSection';
 import { SecondCategories } from '../components/Home/SecondCategories';
-import { SellerInformationPanel } from '../components/SellerInformationPanel/SellerInformationPanel';
 
 const Home = () => {
   return (
     <div className="container max-w-7xl mx-auto flex flex-col gap-5">
-      <SliderHome />
       <DiscountOffersSection />
-      <SectionRecomendados />
-      <SellerInformationPanel />
       <CategoriesSection />
       <SecondCategories />
+      <SliderHome />
+      <SectionRecomendados />
     </div>
   );
 };
