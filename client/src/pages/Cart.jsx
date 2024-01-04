@@ -2,6 +2,7 @@ import React from 'react';
 import BannerDiscount from '../components/BannerDiscount';
 import { SavedOrLatherSection } from '../components/SavedOrLatherSection/SavedOrLatherSection';
 import CartSection from '../components/Cart/CartSection';
+import { Services } from '../components/Services';
 
 const Cart = () => {
   return (
@@ -10,6 +11,7 @@ const Cart = () => {
       <div>
         <CartSection />
       </div>
+      <Services />
       <SavedOrLatherSection />
       <BannerDiscount />
     </div>
