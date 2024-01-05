@@ -36,7 +36,7 @@ const CartSection = () => {
     },
   ];
   return (
-    <div className="border bg-white rounded-md px-5 pb-5">
+    <div className="border bg-white rounded-md px-5 pb-5 flex-grow">
       <div>
         {cart?.map((prod, i) => (
           <CartCardProduct key={i} prod={prod} />
