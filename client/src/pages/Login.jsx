@@ -50,6 +50,7 @@ const Login = () => {
         <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl ">
           <input
             className="w-full py-3 pl-4 pr-8 placeholder-gray-400 outline-none bg-inherit rounded-2xl"
+            autoComplete="off"
             type="password"
             placeholder="password"
             value={passwordLogin}
