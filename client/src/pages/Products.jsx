@@ -1,6 +1,9 @@
 import React from 'react';
 import { ExpandLessIcon } from '../assets/control-icons';
 import ProductList from '../components/Products/ProductList';
+import { SidebarFilter } from '../components/SidebarFilter/index';
+import { Pagination } from '../components/Pagination/index';
+import { SelectBox } from '../components/SelectBox/index';
 
 const Products = () => {
   const categories = ['Home', 'Clothings', "Men's wear", 'Summer clothing'];
@@ -18,8 +21,18 @@ const Products = () => {
           </div>
         ))}
       </div>
-      <div>
-        <ProductList />
+
+      <section className="flex gap-x-3">
+        <SidebarFilter />
+
+        <div className="flex-1">
+          <ProductList />
+        </div>
+      </section>
+
+      <div className="inline-flex gap-x-2 self-end">
+        <SelectBox />
+        <Pagination />
       </div>
     </div>
   );
