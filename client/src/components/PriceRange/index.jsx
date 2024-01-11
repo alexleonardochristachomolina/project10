@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const FilterBar = ({ onChange, value = 0 }) => {
+export const FilterBar = ({ onChange, value = 0 }) => {
   const [sliderValue, setSliderValue] = useState(value);
 
   const handleSliderChangeValue = (event) => {
@@ -26,5 +26,3 @@ FilterBar.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.number,
 };
-
-export default FilterBar;
