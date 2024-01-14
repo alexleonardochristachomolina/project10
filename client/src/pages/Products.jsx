@@ -23,19 +23,19 @@ const Products = () => {
             </div>
           ))}
         </div>
-      <section className="flex gap-x-3">
-        <SidebarFilter />
+        <section className="flex gap-x-3">
+          <SidebarFilter />
 
-        <div className="flex-1">
-          <ProductList />
+          <div className="flex-1">
+            <ProductList />
+          </div>
+        </section>
+
+        <div className="inline-flex gap-x-2 self-end">
+          <SelectBox />
+          <Pagination />
         </div>
-      </section>
-
-      <div className="inline-flex gap-x-2 self-end">
-        <SelectBox />
-        <Pagination />
       </div>
-    </div>
       <SubscriptionSection />
     </>
   );
