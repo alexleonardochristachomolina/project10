@@ -3,6 +3,7 @@ import { HambuergerIcon } from '../../assets/header-icons';
 import Slider from 'react-slick';
 import { ExpandMoreIcon } from '../../assets/control-icons';
 import VerticalMenu from '../VerticalMenu';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isCategoriesMenuVisible, setCategoriesMenuVisible] = useState(false);
@@ -52,9 +53,9 @@ const Navbar = () => {
             className="mr-5 hover:text-gray-500 active:text-blue-500 relative"
             onClick={toggleCategoriesMenu}
           >
-            <div className="flex">
+            <Link to="/products" className="flex">
               <HambuergerIcon /> <span className="ml-1">All category</span>
-            </div>
+            </Link>
             <VerticalMenu
               itemsMenu={itemsCategoriesMenu}
               isVerticalMenuVisible={isCategoriesMenuVisible}

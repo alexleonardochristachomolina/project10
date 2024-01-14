@@ -6,6 +6,7 @@ import {
 } from '../../assets/header-icons';
 import InputSearch from '../InputSearch';
 import Logo from '../Logo';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -15,9 +16,9 @@ const Header = () => {
           <div>
             <HambuergerIcon />
           </div>
-          <div className="flex">
+          <Link to="/" className="flex">
             <Logo />
-          </div>
+          </Link>
         </div>
         <div className="md:inline-block flex-auto hidden mx-20">
           <InputSearch />

@@ -4,24 +4,25 @@ import ProductList from '../components/Products/ProductList';
 import { SidebarFilter } from '../components/SidebarFilter/index';
 import { Pagination } from '../components/Pagination/index';
 import { SelectBox } from '../components/SelectBox/index';
+import SubscriptionSection from '../components/Home/SubscriptionSection';
 
 const Products = () => {
   const categories = ['Home', 'Clothings', "Men's wear", 'Summer clothing'];
   return (
-    <div className="container max-w-7xl mx-auto flex flex-col gap-5">
-      <div className="flex text-[#8B96A5] my-5">
-        {categories.map((cat, i) => (
-          <div key={i} className="flex">
-            <span>{cat}</span>
-            {i < categories.length - 1 && (
-              <span className="transform rotate-90">
-                <ExpandLessIcon />
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
-
+    <>
+      <div className="container max-w-6xl mx-auto flex flex-col gap-5">
+        <div className="flex text-[#8B96A5] my-5">
+          {categories.map((cat, i) => (
+            <div key={i} className="flex">
+              <span>{cat}</span>
+              {i < categories.length - 1 && (
+                <span className="transform rotate-90">
+                  <ExpandLessIcon />
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
       <section className="flex gap-x-3">
         <SidebarFilter />
 
@@ -35,6 +36,8 @@ const Products = () => {
         <Pagination />
       </div>
     </div>
+      <SubscriptionSection />
+    </>
   );
 };
 

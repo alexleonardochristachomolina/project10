@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ButtonIconGroup,
   ButtonIconList,
   CloseIcon,
 } from '../../assets/control-icons';
+import useStore from '../../utils/store';
+import { ProductCard } from './ProductCard';
+import { Pagination } from '../Pagination';
+import { SelectBox } from '../SelectBox';
 
 const ProductList = () => {
+  const { products, fetchProducts } = useStore();
   const categories = [
     'Samsung',
     'Apple',
@@ -14,8 +19,11 @@ const ProductList = () => {
     '4 star',
     '3 star',
   ];
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 mb-12">
       <div className="flex items-center justify-between bg-white border border-[#DEE2E7] rounded-[6px] p-[10px]">
         <div>
           <span>12,911 items in Mobile accessory</span>
@@ -50,7 +58,7 @@ const ProductList = () => {
         {categories.map((cat, i) => (
           <div key={i} className="inline-block ">
             <span className="flex items-center text-[#505050] bg-white pb-1 pt-[2px] pl-[10px] pr-[6px] gap-2 border-2 border-[#0D6EFD] rounded-md">
-              {cat} <CloseIcon className="cursor-pointer" />
+              {cat} <CloseIcon className="cursor-pointer text-[#8B96A5]" />
             </span>
           </div>
         ))}
@@ -58,7 +66,17 @@ const ProductList = () => {
           Clear all filter
         </span>
       </div>
-      <div>Cards</div>
+      <div className="grid grid-cols-3 gap-5">
+        {products?.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+      <div className="flex justify-end">
+        <div className="flex gap-3">
+          <SelectBox />
+          <Pagination />
+        </div>
+      </div>
     </div>
   );
 };

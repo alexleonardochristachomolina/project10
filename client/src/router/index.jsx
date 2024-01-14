@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { FullWithLayout } from '../hocs/layouts/FullWithLayout';
@@ -6,11 +6,11 @@ import AuthLayout from '../hocs/layouts/AuthLayout';
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-const Home = lazy(() => import('../pages/Home'));
-const Products = lazy(() => import('../pages/Products'));
-const ProductDetails = lazy(() => import('../pages/ProductDetails'));
-const Cart = lazy(() => import('../pages/Cart'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+import Home from '../pages/Home';
+import Products from '../pages/Products';
+import ProductDetails from '../pages/ProductDetails';
+import Cart from '../pages/Cart';
+import NotFound from '../pages/NotFound';
 
 export const AppRouter = () => {
   return (
