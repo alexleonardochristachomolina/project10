@@ -5,7 +5,7 @@ import { SellerInfo } from './SellerInfo';
 
 export const SellerInformationPanel = () => {
   return (
-    <div className="flex flex-row w-[1180px] h-[580px] justify-between rounded border border-slate-200">
+    <div className="flex flex-row w-full justify-between rounded border border-slate-200 p-2 gap-3">
       <Carousel />
       <ProductInfo />
       <SellerInfo />

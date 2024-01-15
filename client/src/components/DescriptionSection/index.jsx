@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckIcon from '../../assets/check-icon/index.jsx';
+import { CheckIcon } from '../../assets/seller-icons';
 
 export const DescriptionSection = () => {
   const sections = [
