@@ -2,19 +2,16 @@ import React from 'react';
 
 export const CardRecomendados = () => {
   return (
-    <div className="container w-[220px] h-[310px] bg-white rounded-md flex flex-col items-center justify-start p-3 gap-3">
-      <div className="w-[200px] h-[200px] flex items-center justify-center">
-        <img
-          className="w-[95%] h-[95%]"
-          src="https://m.media-amazon.com/images/I/61h1JmIy4UL._AC_SX679_.jpg"
-          alt="producto"
-        />
-      </div>
-      <div>
-        <h4 className="font-bold">$99.99</h4>
-        <p className="w-[186px] h-[53px] text-gray-400 text-base overflow-hidden">
-          Detalles del producto, lorem ipsum dolor sit amet consectetur
-          adipisicing elit.
+    <div className="bg-white rounded-md flex flex-col items-center p-3 gap-3 border">
+      <img
+        className="w-full h-auto p-3"
+        src="https://m.media-amazon.com/images/I/61h1JmIy4UL._AC_SX679_.jpg"
+        alt="producto"
+      />
+      <div className="md:text-base">
+        <h4 className="font-bold text-[#1C1C1C]">$99.99</h4>
+        <p className="text-gray-400 text-sm">
+          T-shirts with multiple colors, for men
         </p>
       </div>
     </div>
