@@ -3,26 +3,30 @@ import { EmailIcon } from '../../assets/icons-form';
 
 const SubscriptionSection = () => {
   return (
-    <div className="bg-[#EFF2F4] flex flex-col items-center py-8 my-5">
+    <div className="bg-[#EFF2F4] flex flex-col px-4 py-8 my-5 sm:items-center">
       <h4 className=" font-semibold text-xl">Subscribe on our newsletter</h4>
       <p>
         Get daily news on upcoming offers from many suppliers all over the world
       </p>
-      <div className="flex mt-5 gap-2">
+      <form className="flex flex-col mt-5 gap-2 sm:flex-row">
         <div className="relative">
-          <div className="absolute flex h-full items-center pl-1">
+          <label
+            className="absolute flex h-full items-center pl-2"
+            htmlFor="email"
+          >
             <EmailIcon />
-          </div>
+          </label>
           <input
-            type="text"
+            type="email"
+            name="email"
             placeholder="Email"
-            className="py-2 rounded-md w-64 outline-none pl-9 pr-1"
+            className="p-2 pl-11 min-w-full w-64 rounded-md"
           />
         </div>
-        <button className="bg-[#0067FF] text-white px-4 py-2 rounded-md">
+        <button className="bg-customBlue text-white px-4 py-2 rounded-md">
           Subscribe
         </button>
-      </div>
+      </form>
     </div>
   );
 };
