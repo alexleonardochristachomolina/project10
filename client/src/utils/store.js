@@ -31,6 +31,19 @@ const useStore = create((set) => ({
       console.error('Error fetching products:', error);
     }
   },
+  productId: [],
+  // eslint-disable-next-line space-before-function-paren
+  getProductById: async (id) => {
+    try {
+      const response = await axios.get(
+        `https://test-api-nefw.onrender.com/products/${id}`
+      );
+      console.log(response.data);
+      set({ productId: response.data });
+    } catch (error) {
+      console.error(`Error fetching product with id ${id}:`, error);
+    }
+  },
 
   setCurrentPage: (page) => set({ currentPage: page }),
 

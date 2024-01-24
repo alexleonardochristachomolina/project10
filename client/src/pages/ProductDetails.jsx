@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BannerDiscount from '../components/BannerDiscount';
 import { SellerInformationPanel } from '../components/SellerInformationPanel/SellerInformationPanel';
 import { DescriptionSection } from '../components/DescriptionSection';
 import { RelatedProducts } from '../components/RelatedProducts';
 import FavoriteProducts from '../components/ProductsDetails/FavoriteProducts';
 
+import { useParams } from 'react-router-dom';
+import useStore from '../utils/store';
+
 const ProductDetails = () => {
+  const { id } = useParams();
+  const { productId, getProductById } = useStore();
+
+  useEffect(() => {
+    getProductDetails(id);
+  }, [id]);
+
+  // eslint-disable-next-line space-before-function-paren
+  const getProductDetails = async (id) => {
+    await getProductById(id);
+  };
+
   return (
     <div className="container max-w-6xl mx-auto flex flex-col gap-5">
-      <SellerInformationPanel />
+      <SellerInformationPanel productId={productId} />
       <DescriptionSection />
       <FavoriteProducts />
       <RelatedProducts />
