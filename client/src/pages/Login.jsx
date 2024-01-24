@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   EmailIcon,
@@ -8,6 +8,20 @@ import {
 } from '../assets/icons-form';
 
 const Login = () => {
+  const [emailLogin, setEmailLogin] = useState('');
+  const [passwordLogin, setPasswordLogin] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // validaciones
+
+    // .
+    // reinicio del form
+    setEmailLogin('');
+    setPasswordLogin('');
+  };
+
   return (
     <div className="flex flex-col justify-center h-screen mx-4 bg-white md:px-20 rounded-3xl">
       <h1 className="mb-4 text-5xl font-bold text-center text-gray-400">
@@ -19,20 +33,30 @@ const Login = () => {
           Sign Up
         </Link>
       </span>
-      <form action="">
+
+      <form onSubmit={handleSubmit}>
         <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl ">
           <input
             className="w-full py-3 pl-4 pr-8 placeholder-gray-400 outline-none bg-inherit rounded-2xl"
             type="email"
             placeholder="Email"
+            value={emailLogin}
+            onChange={(e) => {
+              setEmailLogin(e.target.value);
+            }}
           />
           <EmailIcon />
         </div>
         <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl ">
           <input
             className="w-full py-3 pl-4 pr-8 placeholder-gray-400 outline-none bg-inherit rounded-2xl"
+            autoComplete="off"
             type="password"
             placeholder="password"
+            value={passwordLogin}
+            onChange={(e) => {
+              setPasswordLogin(e.target.value);
+            }}
           />
           <PasswordIconOpen />
         </div>

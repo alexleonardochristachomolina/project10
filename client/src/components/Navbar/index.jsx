@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { HambuergerIcon } from '../../assets/header-icons';
+import { HamburgerIcon } from '../../assets/header-icons';
 import Slider from 'react-slick';
 import { ExpandMoreIcon } from '../../assets/control-icons';
 import VerticalMenu from '../VerticalMenu';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isCategoriesMenuVisible, setCategoriesMenuVisible] = useState(false);
@@ -46,14 +47,14 @@ const Navbar = () => {
 
   return (
     <section className="text-gray-900 font-medium body-font border-0 sm:border-t-2 sm:border-b-2 border-gray-200">
-      <div className="container p-4 hidden sm:flex md:flex lg:flex xl:flex mx-auto items-start">
-        <nav className="flex items-center text-base">
-          <button
-            className="mr-5 hover:text-gray-500 active:text-blue-500 relative"
-            onClick={toggleCategoriesMenu}
-          >
+      <div className="w-11/12 max-w-7xl container p-4 hidden sm:flex md:flex lg:flex xl:flex mx-auto items-start">
+        <nav className="flex items-center text-base gap-x-7">
+          <button className="mr-5hover:text-gray-500 active:text-blue-500 relative">
             <div className="flex">
-              <HambuergerIcon /> <span className="ml-1">All category</span>
+              <HamburgerIcon onClick={toggleCategoriesMenu} />
+              <Link to="/products">
+                <span className="ml-1">All category</span>
+              </Link>
             </div>
             <VerticalMenu
               itemsMenu={itemsCategoriesMenu}
@@ -61,25 +62,23 @@ const Navbar = () => {
               toggleVerticalMenu={toggleCategoriesMenu}
             />
           </button>
-          <a className="mr-5 hover:text-gray-500 active:text-blue-500" href="#">
+          <a className="hover:text-gray-500 active:text-blue-500" href="#">
             Hot offers
           </a>
-          <a className="mr-5 hover:text-gray-500 active:text-blue-500" href="#">
+          <a className="hover:text-gray-500 active:text-blue-500" href="#">
             Gift boxes
           </a>
-          <a className="mr-5 hover:text-gray-500 active:text-blue-500" href="#">
+          <a className="hover:text-gray-500 active:text-blue-500" href="#">
             News
           </a>
-          <a className="hover:text-gray-500 active:text-blue-500" href="#">
-            <div className="flex">
-              Help <ExpandMoreIcon />
-            </div>
+          <a className="hover:text-gray-500 active:text-blue-500 flex" href="#">
+            Help <ExpandMoreIcon />
           </a>
         </nav>
       </div>
-      <div className=" sm:hidden md:hidden lg:hidden xl:hidden">
-        <nav className="p-4 pr-0">
-          <Slider {...settings}>
+      <div className="sm:hidden md:hidden lg:hidden xl:hidden">
+        <nav className="p-4 pr-0 h-16">
+          <Slider {...settings} className="z-50">
             <div>
               <div
                 className="p-2 mr-2 bg-gray-200 active:bg-blue-500 rounded-md active:text-black text-blue-400 text-center relative"

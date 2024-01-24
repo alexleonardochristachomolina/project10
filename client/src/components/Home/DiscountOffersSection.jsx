@@ -27,65 +27,60 @@ export const DiscountOffersSection = () => {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
-      id: 1,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
-      id: 2,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
-      id: 3,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
-      id: 4,
     },
     {
       img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
       title: 'Amazfit GTS 2',
       discount: 25,
-      id: 5,
     },
   ];
 
   return (
-    <div className="bg-white flex justify-between h-60 rounded-lg border">
-      <div className="pl-[1.25rem] pt-[1.25rem]">
-        <h2 className="text-xl font-semibold">Deals and offers</h2>
-        <p className="text-[#8B96A5] mb-5">Hygiene equipments</p>
-        <div className="flex gap-2">
+    <div className="bg-white sm:flex justify-between sm:rounded-lg sm:border">
+      <div className="flex justify-between px-5 pt-5 sm:block">
+        <span>
+          <h2 className="col-span-3 text-xl font-semibold">Deals and offers</h2>
+          <p className="text-[#8B96A5] mb-5">Hygiene equipments</p>
+        </span>
+        <ul className="flex gap-2">
           {timeData.map(({ label, value }, index) => (
-            <div
+            <li
               key={index}
-              className="bg-[#606060] text-white w-[2.8125rem] h-[3.125rem] flex flex-col justify-center items-center rounded"
+              className="bg-gray-200 text-gray-500 sm:bg-[#606060] sm:text-white w-[2.8125rem] h-[3.125rem] flex flex-col justify-center items-center rounded first:hidden first:sm:flex"
             >
               <span className="font-bold">{value}</span>
               <span className="text-xs">{label}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      <div className="flex">
-        {offers.map((offer) => (
-          <div
-            key={offer.id}
-            className="px-[1.25rem] py-[0.5rem] border h-full flex flex-col items-center gap-3"
-          >
-            <img
-              src={offer.img}
-              alt={offer.title}
-              className="w-[8.75rem] h-[8.75rem]"
-            />
-            <h3>{offer.title}</h3>
+
+      <div className="flex overflow-x-auto">
+        {offers.map(({ img, title, discount }, id) => (
+          <div className="px-6 py-3 border flex flex-col items-center" key={id}>
+            <figure className="p-2">
+              <img src={img} alt={title} className="aspect-square" />
+            </figure>
+
+            <h3 className="whitespace-nowrap mb-2">{title}</h3>
+
             <span className="text-[#EB001B] bg-[#FFE3E3] px-[0.81rem] text-sm font-medium rounded-full py-1">
-              -{offer.discount}%
+              -{discount}%
             </span>
           </div>
         ))}

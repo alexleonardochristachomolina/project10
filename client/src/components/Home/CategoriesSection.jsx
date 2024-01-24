@@ -1,92 +1,56 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { ArrowForward } from '../../assets/home-img/Index';
 
-export const CategoriesSection = () => {
-  const categories = [
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Soft Chairs',
-      from: 19,
-      id: 1,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Sofa / chair',
-      from: 19,
-      id: 2,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Kitechen dishes',
-      from: 19,
-      id: 3,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Smart watches',
-      from: 19,
-      id: 4,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Kitchen mixer',
-      from: 100,
-      id: 5,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Blenders',
-      from: 39,
-      id: 6,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Home appliance',
-      from: 19,
-      id: 7,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      category: 'Coffee maker',
-      from: 10,
-      id: 8,
-    },
-  ];
-
+export const CategoriesSection = ({ title, categories, img }) => {
   return (
-    <div className="bg-white flex justify-between h-64 rounded-lg border">
-      <div className="flex w-64 flex-col relative">
+    <div className="bg-white flex flex-col lg:flex-row md:rounded-lg border relative">
+      <div className="relative">
+        <h2 className="text-xl font-semibold m-5 lg:absolute z-10">{title}</h2>
         <img
-          src="https://res.cloudinary.com/dlfwgaprv/image/upload/v1703338021/ejemplos/cat1_bo6w6s.png"
-          alt=""
-          className="absolute w-full h-full"
+          src={img}
+          alt={title}
+          className="min-w-fit h-full object-right object-cover hidden lg:block rounded-s-lg"
         />
-        <div className="z-10 p-5">
-          <h2 className="text-xl font-semibold w-24 mb-5">Home and outdoor</h2>
-          <button className="font-medium p-4 rounded-md border-white bg-white hover:bg-slate-100">
-            Source Now
-          </button>
-        </div>
       </div>
-      <div className="grid grid-cols-4">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className="px-[1.25rem] py-[0.5rem] border h-full flex gap-3 justify-between items-end"
+
+      <ul className="grid grid-flow-col lg:grid-rows-2 overflow-x-auto w-full">
+        {categories.map(({ category, from, img }, index) => (
+          <li
+            key={index}
+            className="min-w-[9rem] px-6 py-3 border flex flex-col gap-y-3 items-center justify-between lg:flex-row lg:pb-0 lg:pr-0"
           >
-            <div className="h-full">
-              <h3>{category.category}</h3>
-              <span className="text-[#8B96A5] text-[13px]">
-                From USD {category.from}
+            <div className="self-start whitespace-pre">
+              <a href="#" className="block text-[#1C1C1C] hover:underline">
+                {category}
+              </a>
+              <span className="text-[#8B96A5] text-sm w-1/2">
+                From {''}
+                <span className="lg:block">USD {from}</span>
               </span>
             </div>
-            <img
-              src={category.img}
-              alt={category.category}
-              className="w-[82px] h-[82px]"
-            />
-          </div>
+
+            <figure className="p-1 order-first lg:order-none lg:self-end">
+              <img
+                src={img}
+                alt={category}
+                className="max-h-[6rem] w-auto object-scale-down"
+              />
+            </figure>
+          </li>
         ))}
-      </div>
+      </ul>
+
+      <button className="font-medium px-4 py-3 text-[#0D6EFD] text-left bg-white hover:bg-slate-100 lg:absolute lg:top-1/2 lg:ml-5 lg:rounded-md lg:text-black">
+        Source Now
+        <ArrowForward className="inline ml-2 lg:hidden" />
+      </button>
     </div>
   );
+};
+
+CategoriesSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
+  img: PropTypes.string.isRequired,
 };
