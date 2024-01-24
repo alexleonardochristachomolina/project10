@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   CheckIcon,
   DotIcon,
@@ -9,14 +10,14 @@ import {
 } from '../../assets/seller-icons';
 import { FavoriteBorderIcon } from '../../assets/control-icons';
 
-export const ProductInfo = () => {
+export const ProductInfo = ({ info }) => {
   return (
     <div className="w-full flex flex-col gap-2">
       <span className="flex text-[#00B517]">
         <CheckIcon /> In Stock
       </span>
       <h1 className="text-xl font-semibold">
-        Mens Long Sleeve T-shirt Cotton Base Layer Slim Muscle
+        {info.brand} {info.model} {info.operating_system}
       </h1>
       <div className="flex items-center gap-3 text-[#787A80]">
         <div className="flex items-center gap-2 text-[#FF9017]">
@@ -56,25 +57,27 @@ export const ProductInfo = () => {
         <tbody>
           <tr className="border-b border-[#E0E0E0]">
             <td className="whitespace-nowrap px-4 py-2">Price:</td>
-            <td className="whitespace-nowrap px-4 py-2">Negotiable</td>
+            <td className="whitespace-nowrap px-4 py-2">$ {info.price}</td>
           </tr>
           <tr>
-            <td className="whitespace-nowrap px-4 py-2">Type:</td>
-            <td className="whitespace-nowrap px-4 py-2">Classic shoes</td>
+            <td className="whitespace-nowrap px-4 py-2">Color:</td>
+            <td className="whitespace-nowrap px-4 py-2">{info.color}</td>
           </tr>
           <tr>
-            <td className="whitespace-nowrap px-4 py-2">Material:</td>
-            <td className="whitespace-nowrap px-4 py-2">Plastic material</td>
+            <td className="whitespace-nowrap px-4 py-2">Screen Resolution:</td>
+            <td className="whitespace-nowrap px-4 py-2">
+              {info.screen_resolution}
+            </td>
           </tr>
           <tr>
-            <td className="whitespace-nowrap px-4 py-2">Design:</td>
-            <td className="whitespace-nowrap px-4 py-2">Modern nice</td>
+            <td className="whitespace-nowrap px-4 py-2">Main Camera:</td>
+            <td className="whitespace-nowrap px-4 py-2">
+              {info.main_camera} MP
+            </td>
           </tr>
           <tr className="border-t border-[#E0E0E0]">
-            <td className="whitespace-nowrap px-4 py-2">Customization:</td>
-            <td className="px-4 py-2">
-              Customized logo and design custom packages
-            </td>
+            <td className="whitespace-nowrap px-4 py-2">Connectivity:</td>
+            <td className="px-4 py-2">{info.connectivity}</td>
           </tr>
         </tbody>
       </table>
@@ -91,4 +94,17 @@ export const ProductInfo = () => {
       </div>
     </div>
   );
+};
+
+ProductInfo.propTypes = {
+  info: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    model: PropTypes.string.isRequired,
+    operating_system: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired,
+    screen_resolution: PropTypes.string.isRequired,
+    main_camera: PropTypes.number.isRequired,
+    connectivity: PropTypes.string.isRequired,
+  }).isRequired,
 };
