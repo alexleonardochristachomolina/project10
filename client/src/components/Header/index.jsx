@@ -2,7 +2,7 @@ import React from 'react';
 import {
   ShoppingCartIcon,
   PersonIcon,
-  HambuergerIcon,
+  HamburgerIcon,
 } from '../../assets/header-icons';
 import InputSearch from '../InputSearch';
 import Logo from '../Logo';
@@ -10,12 +10,10 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="container mx-auto p-4 ">
+    <header className="container mx-auto p-4 w-11/12 max-w-7xl">
       <div className="flex gap-4 justify-between">
-        <div className="flex  gap-4 items-center">
-          <div>
-            <HambuergerIcon />
-          </div>
+        <div className="flex gap-4 items-center">
+          <HamburgerIcon className="md:hidden" />
           <Link to="/" className="flex">
             <Logo />
           </Link>
