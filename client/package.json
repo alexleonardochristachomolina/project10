@@ -11,12 +11,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@metamask/logo": "^3.1.2",
+    "@mui/material": "^6.4.3",
     "axios": "^1.6.3",
     "classnames": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "react-slick": "^0.29.0",
+    "request": "^2.88.2",
     "zustand": "^4.4.7"
   },
   "devDependencies": {

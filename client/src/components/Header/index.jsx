@@ -39,6 +39,8 @@ const Header = () => {
             <PersonIcon />
             <p className="hidden md:inline md:text-gray-500">Profile</p>
           </Link>
+         
+
         </div>
       </div>
       <div className="md:hidden mt-4">
