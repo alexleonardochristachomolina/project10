@@ -15,7 +15,7 @@ export const ProductCard = ({ product }) => {
       <div className="bg-white sm:border-b py-8 px-10">
         <img
           className="object-scale-down aspect-square w-full"
-          src={image[0]}
+          src={image}
           alt={model}
         />
       </div>
@@ -58,7 +58,7 @@ export const ProductCard = ({ product }) => {
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number,
-    image: PropTypes.array,
+    image: PropTypes.string,
     price: PropTypes.number,
     brand: PropTypes.string,
     model: PropTypes.string,

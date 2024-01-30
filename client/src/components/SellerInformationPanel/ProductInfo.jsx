@@ -17,7 +17,7 @@ export const ProductInfo = ({ info }) => {
         <CheckIcon /> In Stock
       </span>
       <h1 className="text-xl font-semibold">
-        {info.brand} {info.model} {info.operating_system}
+        {info.brand} {info.model} {info.operatingSystem}
       </h1>
       <div className="flex items-center gap-3 text-[#787A80]">
         <div className="flex items-center gap-2 text-[#FF9017]">
@@ -66,13 +66,13 @@ export const ProductInfo = ({ info }) => {
           <tr>
             <td className="whitespace-nowrap px-4 py-2">Screen Resolution:</td>
             <td className="whitespace-nowrap px-4 py-2">
-              {info.screen_resolution}
+              {info.screenResolution}
             </td>
           </tr>
           <tr>
             <td className="whitespace-nowrap px-4 py-2">Main Camera:</td>
             <td className="whitespace-nowrap px-4 py-2">
-              {info.main_camera} MP
+              {info.mainCamera} MP
             </td>
           </tr>
           <tr className="border-t border-[#E0E0E0]">
@@ -100,11 +100,11 @@ ProductInfo.propTypes = {
   info: PropTypes.shape({
     brand: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
-    operating_system: PropTypes.string.isRequired,
+    operatingSystem: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
-    screen_resolution: PropTypes.string.isRequired,
-    main_camera: PropTypes.number.isRequired,
+    screenResolution: PropTypes.string.isRequired,
+    mainCamera: PropTypes.string.isRequired,
     connectivity: PropTypes.string.isRequired,
   }).isRequired,
 };
