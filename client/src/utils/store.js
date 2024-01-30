@@ -11,15 +11,15 @@ const useStore = create((set) => ({
   fetchProducts: async () => {
     try {
       const response = await axios.get(
-        'https://test-api-nefw.onrender.com/products'
+        'http://ns2.dataindev.com:8080/cellphones/allCellphones'
       ); // Usar axios para la petición GET
 
-      console.log(response.data); // Acceder a los datos directamente desde response.data
-      set({ products: response.data });
+      console.log(response.data.content); // Acceder a los datos directamente desde response.data
+      set({ products: response.data.content });
 
       // Filtrar categorías únicas y actualizar el estado
       const uniqueCategories = [
-        ...new Set(response.data.map((product) => product.category)),
+        ...new Set(response.data.content.map((product) => product.category)),
       ];
       set({ categories: uniqueCategories });
 
@@ -36,7 +36,7 @@ const useStore = create((set) => ({
   getProductById: async (id) => {
     try {
       const response = await axios.get(
-        `https://test-api-nefw.onrender.com/products/${id}`
+        `http://ns2.dataindev.com:8080/cellphones/${id}`
       );
       console.log(response.data);
       set({ productId: response.data });
