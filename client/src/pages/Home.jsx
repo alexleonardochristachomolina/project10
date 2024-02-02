@@ -54,7 +54,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="container max-w-7xl mx-auto flex flex-col gap-5 md:px-4">
+      <div className="container max-w-6xl mx-auto flex flex-col gap-5 md:px-4">
         <Banner />
         <DiscountOffersSection />
         <CategoriesSection
