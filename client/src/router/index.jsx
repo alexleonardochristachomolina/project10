@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import Products from '../pages/Products';
 import ProductDetails from '../pages/ProductDetails';
 import Cart from '../pages/Cart';
+import AddProduct from '../pages/AddProduct';
 import NotFound from '../pages/NotFound';
 
 export const AppRouter = () => {
@@ -20,6 +21,7 @@ export const AppRouter = () => {
         <Route path="products" element={<Products />} />
         <Route path="products/:id" element={<ProductDetails />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="userprofile/addproduct" element={<AddProduct />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/auth" element={<AuthLayout />}>
