@@ -35,7 +35,7 @@ const Login = () => {
       </span>
 
       <form onSubmit={handleSubmit}>
-        <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl">
+        <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl ">
           <input
             className="w-full py-3 pl-4 pr-8 placeholder-gray-400 outline-none bg-inherit rounded-2xl"
             type="email"
@@ -47,7 +47,7 @@ const Login = () => {
           />
           <EmailIcon />
         </div>
-        <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl">
+        <div className="relative flex items-center px-2 mb-4 bg-gray-100 border border-gray-300 rounded-2xl ">
           <input
             className="w-full py-3 pl-4 pr-8 placeholder-gray-400 outline-none bg-inherit rounded-2xl"
             autoComplete="off"
@@ -75,7 +75,7 @@ const Login = () => {
           </div>
           <div className="flex items-center gap-1 px-4 py-3 bg-blue-500 md:gap-4 md:px-12 rounded-2xl">
             <FacebookIcon />
-            <button className="font-bold text-white uppercase">
+            <button className="font-bold text-white uppercase ">
               Iniciar sesion con Facebook
             </button>
           </div>
