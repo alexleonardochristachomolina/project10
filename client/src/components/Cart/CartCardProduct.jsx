@@ -1,21 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ControlButton from '../ControlButton/Index';
+import { MoreVertIcon } from '../../assets/control-icons/index';
 
 const CartCardProduct = ({ prod }) => {
   const { img, name, size, color, material, seller, price, stock } = prod;
   return (
-    <div className="flex justify-between border-b py-5">
+    <div className="last:border-b-0 flex flex-col gap-y-4 justify-between border-b py-5 px-5 md:px-0 md:mx-5 md:flex-row">
       <div className="flex gap-3">
-        <div className="w-[80px] h-[80px] px-3 py-2 border rounded-md">
-          <img src={img} alt="" />
-        </div>
+        <figure className="self-baseline flex-shrink-0 border rounded-md">
+          <img
+            src={img}
+            className="h-20 w-20 object-scale-down object-center rounded-md"
+            alt=""
+          />
+        </figure>
         <div className="flex flex-col gap-1">
-          <h2 className="font-medium">{name}</h2>
-          <p className="text-[#8B96A5]">
-            Size: {size}, Color: {color}, Material: {material}
-          </p>
-          <p className="text-[#8B96A5]">Seller: {seller}</p>
-          <div className="flex gap-2 mt-2">
+          <h2 className="font-medium text-base leading-5">{name}</h2>
+          <div className="leading-4 text-sm text-[#8B96A5]">
+            <p>
+              Size: {size}, Color: {color}, Material: {material}
+            </p>
+            <p>Seller: {seller}</p>
+          </div>
+          <div className="hidden gap-2 mt-2 md:flex">
             <button className="border rounded-md text-[#FA3434] font-medium text-[13px] px-[10px] py-1 hover:bg-[#0D6EFD] hover:text-white">
               Remove
             </button>
@@ -24,15 +32,21 @@ const CartCardProduct = ({ prod }) => {
             </button>
           </div>
         </div>
+
+        <button type="button" className="w-10 h-10 md:hidden">
+          <MoreVertIcon />
+        </button>
       </div>
-      <div className="flex flex-col gap-4 items-end">
-        <span className="font-medium">${price}</span>
+      <div className="flex md:flex-col gap-4 items-end justify-between md:justify-start">
+        <ControlButton className="md:hidden" />
+
+        <span className="text-base font-medium">${price}</span>
         <select
           name="quantity"
           id=""
-          className="w-28 px-2 py-1 border rounded-md outline-none"
+          className="w-28 px-2 py-1 border rounded-md outline-none hidden md:block"
         >
-          <option value="">quantity</option>
+          <option>quantity</option>
           {[...Array(stock)].map((_, index) => (
             <option key={index + 1} value={index + 1}>
               {index + 1}

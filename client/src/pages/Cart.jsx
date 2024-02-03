@@ -8,8 +8,8 @@ import Checkout from '../components/Cart/Checkout';
 const Cart = () => {
   return (
     <div className="container max-w-6xl mx-auto flex flex-col gap-5 my-5">
-      <p>My cart (3)</p>
-      <div className="flex gap-5">
+      <p className="ml-5 xl:ml-0">My cart (3)</p>
+      <div className="flex flex-col gap-x-5 md:flex-row bg-white">
         <CartSection />
         <Checkout />
       </div>
