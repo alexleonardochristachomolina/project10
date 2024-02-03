@@ -14,7 +14,7 @@ export const CategoriesSection = ({ title, categories, img }) => {
         />
       </div>
 
-      <ul className="grid grid-flow-col lg:grid-rows-2 overflow-x-auto w-full">
+      <ul className="grid grid-flow-col lg:grid-rows-2 overflow-x-auto grow">
         {categories.map(({ category, from, img }, index) => (
           <li
             key={index}

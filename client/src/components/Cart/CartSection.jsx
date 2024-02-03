@@ -36,13 +36,12 @@ const CartSection = () => {
     },
   ];
   return (
-    <div className="border bg-white rounded-md px-5 pb-5 flex-grow">
-      <div>
-        {cart?.map((prod, i) => (
-          <CartCardProduct key={i} prod={prod} />
-        ))}
-      </div>
-      <div className="flex justify-between mt-5">
+    <div className="border xl:rounded-md pb-5 flex-grow w-full">
+      {cart?.map((prod, i) => (
+        <CartCardProduct key={i} prod={prod} />
+      ))}
+
+      <div className="justify-between m-5 mb-0 hidden md:flex">
         <button className="bg-[#0067FF] flex items-center gap-3 text-white rounded-md hover:bg-white hover:text-[#0067FF] border p-2">
           <ArrowBack />
           Back to shop

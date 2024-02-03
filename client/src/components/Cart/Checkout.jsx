@@ -8,8 +8,8 @@ import {
 
 const Checkout = () => {
   return (
-    <div className="w-[280px]">
-      <div className="bg-white border rounded-md px-4 py-6 mb-5">
+    <div className="w-full md:w-72">
+      <div className="bg-white border rounded-md px-4 py-6 mb-5 hidden md:block">
         <p className="mb-3">Have a coupon?</p>
         <div className="flex">
           <input
@@ -22,7 +22,7 @@ const Checkout = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white border rounded-md px-4 py-6">
+      <div className="bg-white border md:rounded-md px-4 py-6">
         <div className="border-b pb-3 text-[#505050]">
           <div className="flex justify-between">
             Subtotal:<span className="text-[#505050]">$1403.97</span>
@@ -41,7 +41,7 @@ const Checkout = () => {
           <button className="bg-[#00B517] rounded-lg text-white text-lg py-2 flex justify-center">
             Checkout
           </button>
-          <div className="flex justify-center gap-2 mt-2">
+          <div className="justify-center gap-2 mt-2 hidden md:flex">
             <AmericanExpress />
             <MasterCard />
             <Paypal />
