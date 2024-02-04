@@ -1,4 +1,3 @@
-/* eslint-disable multiline-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
 const Campo = ({ label, placeholder, required, valor, onChange, type }) => {
