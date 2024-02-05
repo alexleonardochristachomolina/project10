@@ -18,6 +18,7 @@ const SubscriptionSection = () => {
           </label>
           <input
             type="email"
+            id="email"
             name="email"
             placeholder="Email"
             className="p-2 pl-11 min-w-full w-64 rounded-md"
