@@ -10,11 +10,15 @@ import useStore from '../utils/store';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { productId, getProductById } = useStore();
+  const { productId, getProductById, products, fetchProducts } = useStore();
 
   useEffect(() => {
     getProductDetails(id);
   }, [id]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   // eslint-disable-next-line space-before-function-paren
   const getProductDetails = async (id) => {
@@ -25,8 +29,8 @@ const ProductDetails = () => {
     <div className="container max-w-6xl mx-auto flex flex-col gap-5">
       <SellerInformationPanel productId={productId} />
       <DescriptionSection />
-      <FavoriteProducts />
-      <RelatedProducts />
+      <FavoriteProducts products={products} />
+      <RelatedProducts products={products} />
       <BannerDiscount />
     </div>
   );
