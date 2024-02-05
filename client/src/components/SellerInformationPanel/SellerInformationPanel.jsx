@@ -15,7 +15,8 @@ export const SellerInformationPanel = ({ productId }) => {
 };
 
 SellerInformationPanel.propTypes = {
-  productId: PropTypes.shape({
-    image: PropTypes.string,
-  }).isRequired,
+  productId: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.any),
+  ]).isRequired,
 };
