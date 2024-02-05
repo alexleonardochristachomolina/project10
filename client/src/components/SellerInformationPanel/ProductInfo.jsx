@@ -97,14 +97,8 @@ export const ProductInfo = ({ info }) => {
 };
 
 ProductInfo.propTypes = {
-  info: PropTypes.shape({
-    brand: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-    operatingSystem: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
-    screenResolution: PropTypes.string.isRequired,
-    mainCamera: PropTypes.string.isRequired,
-    connectivity: PropTypes.string.isRequired,
-  }).isRequired,
+  info: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object),
+  ]).isRequired,
 };
