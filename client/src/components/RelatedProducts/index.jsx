@@ -11,7 +11,7 @@ export const RelatedProducts = ({ products }) => {
         <div className="flex gap-x-5 overflow-x-auto">
           {products?.slice(0, 6).map((product) => (
             <div
-              key={product}
+              key={product.id}
               className="flex flex-col gap-y-[.875rem] min-w-fit"
             >
               <picture className="bg-[#EEE] p-5 rounded-md">
