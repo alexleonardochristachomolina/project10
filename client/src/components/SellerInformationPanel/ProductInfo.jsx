@@ -12,7 +12,7 @@ import { FavoriteBorderIcon } from '../../assets/control-icons';
 
 export const ProductInfo = ({ info }) => {
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full flex flex-1 flex-col gap-2">
       <span className="flex text-[#00B517]">
         <CheckIcon /> In Stock
       </span>
@@ -81,7 +81,7 @@ export const ProductInfo = ({ info }) => {
           </tr>
         </tbody>
       </table>
-      <div className="flex justify-between">
+      <div className="flex gap-1">
         <button className="bg-[#0067FF] w-[180px] text-white font-medium rounded-lg">
           Buy
         </button>
