@@ -9,8 +9,19 @@ import {
   StarIconDisabled,
 } from '../../assets/seller-icons';
 import { FavoriteBorderIcon } from '../../assets/control-icons';
+import useStore from '../../utils/store';
 
 export const ProductInfo = ({ info }) => {
+  const { cart, addToCart, removeFromCart } = useStore();
+  const isInCart = cart.some((item) => item.id === info.id);
+
+  const handleClick = () => {
+    if (isInCart) {
+      removeFromCart(info.id);
+    } else {
+      addToCart(info);
+    }
+  };
   return (
     <div className="w-full flex flex-1 flex-col gap-2">
       <span className="flex text-[#00B517]">
@@ -85,8 +96,14 @@ export const ProductInfo = ({ info }) => {
         <button className="bg-[#0067FF] w-[180px] text-white font-medium rounded-lg">
           Buy
         </button>
-        <button className="bg-[#00B517] w-[180px] text-white font-medium rounded-lg">
-          Add to cart
+        <button
+          disabled={isInCart}
+          onClick={handleClick}
+          className={`w-[180px] text-white font-medium rounded-lg ${
+            isInCart ? 'bg-[#81e78e]' : 'bg-[#29e442]'
+          }`}
+        >
+          {isInCart ? 'In cart' : 'Add to cart'}
         </button>
         <button className="border-2 w-10 h-10 rounded-lg flex items-center justify-center">
           <FavoriteBorderIcon className="text-[#0067FF]" />

@@ -6,6 +6,8 @@ const useStore = create((set) => ({
   categories: [],
   currentPage: 1,
   totalPages: 1,
+  cart: [],
+  totalPrice: 0,
 
   // eslint-disable-next-line space-before-function-paren
   fetchProducts: async () => {
@@ -50,6 +52,25 @@ const useStore = create((set) => ({
   nextPage: () => set((state) => ({ currentPage: state.currentPage + 1 })),
 
   prevPage: () => set((state) => ({ currentPage: state.currentPage - 1 })),
+
+  // Estado para agregar y eliminar carrito
+  addToCart: (product) =>
+    set((state) => ({
+      cart: [...state.cart, product],
+      totalPrice:
+        state.totalPrice + (product?.price || 0) * (product.quantity || 1),
+    })),
+  removeFromCart: (productId) =>
+    set((state) => {
+      const removedProduct = state.cart.find(
+        (product) => product.id === productId
+      );
+      return {
+        cart: state.cart.filter((product) => product.id !== productId),
+        totalPrice: state.totalPrice - (removedProduct?.price || 0),
+      };
+    }),
+  clearCart: () => set({ cart: [], totalPrice: 0 }),
 }));
 
 export default useStore;
