@@ -25,7 +25,7 @@ export const DescriptionSection = () => {
 
   return (
     <>
-      <div className="flex flex-col border-[1px] rounded-lg shadow w-[90%] max-w-7xl">
+      <div className="max-w-7xl flex flex-col md:border-[1px] rounded-lg shadow">
         {/* Cabecera de la seccion de descripciones */}
         <ul className="flex overflow-x-auto text-gray-500 font-medium items-center pl-2 pr-2 border-b-[1px]  border-gray-300">
           {sections.map(({ title, href, active }) => (

@@ -6,7 +6,7 @@ import { SellerInfo } from './SellerInfo';
 
 export const SellerInformationPanel = ({ productId }) => {
   return (
-    <div className="flex flex-row w-full justify-between rounded border border-slate-200 p-2 gap-3">
+    <div className="max-full p-2 flex flex-col md:flex-row justify-between flex-wrap gap-3 border border-slate-200 rounded">
       <Carousel image={productId.image} />
       <ProductInfo info={productId} />
       <SellerInfo />
@@ -15,7 +15,8 @@ export const SellerInformationPanel = ({ productId }) => {
 };
 
 SellerInformationPanel.propTypes = {
-  productId: PropTypes.shape({
-    image: PropTypes.string,
-  }).isRequired,
+  productId: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.any),
+  ]).isRequired,
 };
