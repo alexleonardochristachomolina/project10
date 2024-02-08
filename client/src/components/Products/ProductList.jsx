@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ButtonIconGroup,
   ButtonIconList,
@@ -10,7 +10,14 @@ import { Pagination } from '../Pagination';
 import { SelectBox } from '../SelectBox';
 
 const ProductList = () => {
-  const { products, fetchProducts } = useStore();
+  const {
+    products,
+    fetchProducts,
+    currentPage,
+    setCurrentPage,
+    prevPage,
+    nextPage,
+  } = useStore();
   const categories = [
     'Samsung',
     'Apple',
@@ -19,6 +26,13 @@ const ProductList = () => {
     '4 star',
     '3 star',
   ];
+
+  const totalProducts = products.length;
+  const [productsPerPage] = useState(9);
+
+  const lastIndex = currentPage * productsPerPage;
+  const firstIndex = lastIndex - productsPerPage;
+
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
@@ -69,14 +83,21 @@ const ProductList = () => {
         </button>
       </ul>
       <div className="grid md:grid-cols-3 gap-5">
-        {products?.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {products
+          ?.map((product) => <ProductCard key={product.id} product={product} />)
+          .slice(firstIndex, lastIndex)}
       </div>
       <div className="flex justify-end">
         <div className="flex gap-3">
           <SelectBox />
-          <Pagination />
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            productsPerPage={productsPerPage}
+            totalProducts={totalProducts}
+          />
         </div>
       </div>
     </div>
