@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExpandMoreIcon } from '../../assets/control-icons';
+// import { ExpandMoreIcon } from '../../assets/control-icons';
 
 export const SelectBox = () => {
   return (
@@ -8,9 +8,9 @@ export const SelectBox = () => {
         <option value="default">Show 10</option>
         <option value="show20">Show 20</option>
         <option value="show30">Show 30</option>
-        <button>
+        {/* <button>
           <ExpandMoreIcon />
-        </button>
+        </button> */}
       </select>
     </>
   );

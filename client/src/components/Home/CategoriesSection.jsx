@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ArrowForward } from '../../assets/home-img/Index';
 
-export const CategoriesSection = ({ title, categories, img }) => {
+export const CategoriesSection = ({ title, products, img }) => {
   return (
     <div className="bg-white flex flex-col lg:flex-row md:rounded-lg border relative">
       <div className="relative">
@@ -15,25 +15,25 @@ export const CategoriesSection = ({ title, categories, img }) => {
       </div>
 
       <ul className="grid grid-flow-col lg:grid-rows-2 overflow-x-auto grow">
-        {categories.map(({ category, from, img }, index) => (
+        {products?.slice(0, 8).map(({ brand, image }, index) => (
           <li
             key={index}
             className="min-w-[9rem] px-6 py-3 border flex flex-col gap-y-3 items-center justify-between lg:flex-row lg:pb-0 lg:pr-0"
           >
             <div className="self-start whitespace-pre">
               <a href="#" className="block text-[#1C1C1C] hover:underline">
-                {category}
+                {brand}
               </a>
               <span className="text-[#8B96A5] text-sm w-1/2">
                 From {''}
-                <span className="lg:block">USD {from}</span>
+                <span className="lg:block">USD 100</span>
               </span>
             </div>
 
             <figure className="p-1 order-first lg:order-none lg:self-end">
               <img
-                src={img}
-                alt={category}
+                src={image}
+                alt={brand}
                 className="max-h-[6rem] w-auto object-scale-down"
               />
             </figure>
@@ -47,10 +47,4 @@ export const CategoriesSection = ({ title, categories, img }) => {
       </button>
     </div>
   );
-};
-
-CategoriesSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  categories: PropTypes.array.isRequired,
-  img: PropTypes.string.isRequired,
 };

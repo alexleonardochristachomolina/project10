@@ -4,7 +4,7 @@ import { VerifiedUserIcon, LanguageIcon } from '../../assets/seller-icons';
 
 export const SellerInfo = () => {
   return (
-    <section className="w-[280px] h-[264px] px-4 py-5 border-slate-200 border rounded-md">
+    <section className="w-[280px] h-[264px] flex-auto px-4 py-5 md:border border-slate-200 rounded-md">
       <div className="flex flex-row gap-3">
         <div className="w-12 h-12">
           <img

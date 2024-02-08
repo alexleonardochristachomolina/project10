@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { timeLeft } from '../../utils/DiscountTimer';
+import { Link } from 'react-router-dom';
 
 function useInterval(callback, delay) {
   useEffect(() => {
@@ -8,7 +10,7 @@ function useInterval(callback, delay) {
   }, [callback, delay]);
 }
 
-export const DiscountOffersSection = () => {
+export const DiscountOffersSection = ({ products }) => {
   const [time, setTime] = useState(timeLeft());
 
   useInterval(() => {
@@ -20,34 +22,6 @@ export const DiscountOffersSection = () => {
     { label: 'Hour', value: time.hours },
     { label: 'Min', value: time.minutes },
     { label: 'Sec', value: time.seconds },
-  ];
-
-  const offers = [
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      title: 'Amazfit GTS 2',
-      discount: 25,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      title: 'Amazfit GTS 2',
-      discount: 25,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      title: 'Amazfit GTS 2',
-      discount: 25,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      title: 'Amazfit GTS 2',
-      discount: 25,
-    },
-    {
-      img: 'https://res.cloudinary.com/dlfwgaprv/image/upload/v1702084106/ejemplos/klipartz.com_pjzkxj.png',
-      title: 'Amazfit GTS 2',
-      discount: 25,
-    },
   ];
 
   return (
@@ -71,16 +45,20 @@ export const DiscountOffersSection = () => {
       </div>
 
       <div className="flex overflow-x-auto">
-        {offers.map(({ img, title, discount }, id) => (
+        {products.slice(0, 5).map(({ brand, model, image }, id) => (
           <div className="px-6 py-3 border flex flex-col items-center" key={id}>
-            <figure className="p-2">
-              <img src={img} alt={title} className="aspect-square" />
+            <figure className="p-2 w-28">
+              <img src={image} alt={brand} className="aspect-square" />
             </figure>
 
-            <h3 className="whitespace-nowrap mb-2">{title}</h3>
+            <Link to={`/products/${id}`} className="order-first sm:order-last">
+              <h3 className="whitespace-nowrap mb-2 hover:underline">
+                {model}
+              </h3>
+            </Link>
 
             <span className="text-[#EB001B] bg-[#FFE3E3] px-[0.81rem] text-sm font-medium rounded-full py-1">
-              -{discount}%
+              -25%
             </span>
           </div>
         ))}

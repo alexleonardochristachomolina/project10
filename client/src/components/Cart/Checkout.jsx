@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AmericanExpress,
   MasterCard,
   Paypal,
   Visa,
 } from '../../assets/seller-icons';
+import useStore from '../../utils/store';
 
 const Checkout = () => {
+  const { totalPrice, cart } = useStore();
+
+  const [calculatedTotal, setCalculatedTotal] = useState(0);
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      setCalculatedTotal(0);
+    } else if (totalPrice !== undefined) {
+      const discountedPrice = totalPrice - 60;
+      const totalWithTax = discountedPrice + 14;
+      setCalculatedTotal(totalWithTax);
+    }
+  }, [totalPrice, cart]);
+
   return (
     <div className="w-full md:w-72">
       <div className="bg-white border rounded-md px-4 py-6 mb-5 hidden md:block">
@@ -25,7 +40,8 @@ const Checkout = () => {
       <div className="bg-white border md:rounded-md px-4 py-6">
         <div className="border-b pb-3 text-[#505050]">
           <div className="flex justify-between">
-            Subtotal:<span className="text-[#505050]">$1403.97</span>
+            Subtotal:
+            <span className="text-[#505050]">${totalPrice.toFixed(2)}</span>
           </div>
           <div className="flex justify-between">
             Discount:<span className="text-[#FA3434]">- $60.00</span>
@@ -36,7 +52,10 @@ const Checkout = () => {
         </div>
         <div className="flex flex-col gap-2 mt-5">
           <div className="flex justify-between font-semibold">
-            Total:<span className="text-xl font-semibold">$1357.97</span>
+            Total:
+            <span className="text-xl font-semibold">
+              ${calculatedTotal.toFixed(2)}
+            </span>
           </div>
           <button className="bg-[#00B517] rounded-lg text-white text-lg py-2 flex justify-center">
             Checkout
