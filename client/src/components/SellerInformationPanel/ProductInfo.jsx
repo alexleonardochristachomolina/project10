@@ -23,7 +23,7 @@ export const ProductInfo = ({ info }) => {
     }
   };
   return (
-    <div className="w-full flex flex-1 flex-col gap-2">
+    <div className="w-full flex flex-1 flex-col order-3 gap-2">
       <span className="flex text-[#00B517]">
         <CheckIcon /> In Stock
       </span>

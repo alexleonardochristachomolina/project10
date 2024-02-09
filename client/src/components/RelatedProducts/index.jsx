@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const RelatedProducts = ({ products }) => {
   return (
     <>
-      <div className="w-fit p-[1.625rem_1.375rem_2rem] rounded-md border border-gray-300">
+      <div className="w-full p-[1.625rem_1.375rem_2rem] rounded-md border border-gray-300">
         <h4 className="font-semibold text-xl mb-4">Related products</h4>
 
         <div className="flex gap-x-5 overflow-x-auto">
