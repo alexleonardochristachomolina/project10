@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   ButtonIconGroup,
   ButtonIconList,
@@ -17,6 +17,7 @@ const ProductList = () => {
     setCurrentPage,
     prevPage,
     nextPage,
+    totalPages,
   } = useStore();
   const categories = [
     'Samsung',
@@ -27,15 +28,9 @@ const ProductList = () => {
     '3 star',
   ];
 
-  const totalProducts = products.length;
-  const [productsPerPage] = useState(9);
-
-  const lastIndex = currentPage * productsPerPage;
-  const firstIndex = lastIndex - productsPerPage;
-
   useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+    fetchProducts(currentPage - 1);
+  }, [currentPage]);
   return (
     <div className="flex flex-col gap-5 mb-12 w-11/12 mx-auto">
       <div className="flex items-center justify-between bg-white border border-[#DEE2E7] rounded-[6px] p-[10px]">
@@ -83,9 +78,9 @@ const ProductList = () => {
         </button>
       </ul>
       <div className="grid md:grid-cols-3 gap-5">
-        {products
-          ?.map((product) => <ProductCard key={product.id} product={product} />)
-          .slice(firstIndex, lastIndex)}
+        {products?.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
       <div className="flex justify-end">
         <div className="flex gap-3">
@@ -95,8 +90,7 @@ const ProductList = () => {
             setCurrentPage={setCurrentPage}
             nextPage={nextPage}
             prevPage={prevPage}
-            productsPerPage={productsPerPage}
-            totalProducts={totalProducts}
+            totalPages={totalPages}
           />
         </div>
       </div>
