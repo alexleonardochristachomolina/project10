@@ -10,10 +10,10 @@ const useStore = create((set) => ({
   totalPrice: 0,
 
   // eslint-disable-next-line space-before-function-paren
-  fetchProducts: async () => {
+  fetchProducts: async (page = 0) => {
     try {
       const response = await axios.get(
-        'http://ns2.dataindev.com:8080/cellphones/allCellphones'
+        `http://ns2.dataindev.com:8080/cellphones/allCellphones?page=${page}`
       ); // Usar axios para la petición GET
 
       console.log(response.data.content); // Acceder a los datos directamente desde response.data
@@ -24,11 +24,7 @@ const useStore = create((set) => ({
         ...new Set(response.data.content.map((product) => product.category)),
       ];
       set({ categories: uniqueCategories });
-
-      // Actualizar totalPages si la respuesta incluye la información
-      if (response.headers['x-total-pages']) {
-        set({ totalPages: parseInt(response.headers['x-total-pages']) });
-      }
+      set({ totalPages: response.data.totalPages });
     } catch (error) {
       console.error('Error fetching products:', error);
     }

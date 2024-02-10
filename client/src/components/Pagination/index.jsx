@@ -7,29 +7,31 @@ export const Pagination = ({
   setCurrentPage,
   nextPage,
   prevPage,
-  totalProducts,
-  productsPerPage,
+  totalPages,
 }) => {
-  const pages = [];
-  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
-    pages.push(i);
-  }
-
+  const pages = [
+    currentPage,
+    currentPage + 1,
+    currentPage + 2,
+    currentPage + 3,
+  ];
   return (
     <>
       <div className="flex flex-1 justify-between sm:hidden">
-        <a
-          href="#"
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        <button
+          disabled={currentPage === 1}
+          onClick={prevPage}
+          className="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Anterior
-        </a>
-        <a
-          href="#"
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        </button>
+
+        <button
+          onClick={nextPage}
+          className="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Siguiente
-        </a>
+        </button>
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
@@ -38,9 +40,8 @@ export const Pagination = ({
             aria-label="Pagination"
           >
             <button
-              onClick={() => {
-                currentPage > 1 && prevPage();
-              }}
+              disabled={currentPage === 1}
+              onClick={prevPage}
               className="rounded-l-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Anterior</span>
@@ -49,6 +50,7 @@ export const Pagination = ({
 
             {pages.map((page, index) => (
               <button
+                disabled={page > totalPages}
                 key={index}
                 onClick={() => {
                   setCurrentPage(page);
@@ -66,9 +68,8 @@ export const Pagination = ({
             ))}
 
             <button
-              onClick={() => {
-                currentPage <= pages.length - 1 && nextPage();
-              }}
+              disabled={currentPage >= totalPages}
+              onClick={nextPage}
               className="rounded-r-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Siguiente</span>
