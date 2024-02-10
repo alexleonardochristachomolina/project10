@@ -45,12 +45,11 @@ export const DiscountOffersSection = ({ products }) => {
       </div>
 
       <div className="flex overflow-x-auto">
-        {products.slice(0, 5).map(({ brand, model, image }, id) => (
+        {products.slice(0, 5).map(({ brand, model, image, id }) => (
           <div className="px-6 py-3 border flex flex-col items-center" key={id}>
             <figure className="p-2 w-28">
               <img src={image} alt={brand} className="aspect-square" />
             </figure>
-
             <Link to={`/products/${id}`} className="order-first sm:order-last">
               <h3 className="whitespace-nowrap mb-2 hover:underline">
                 {model}
