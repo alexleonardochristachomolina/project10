@@ -4,16 +4,20 @@ import { FilterBar } from '../PriceRange/index.jsx';
 import { Categories } from './Categories.jsx';
 import { ExpandLessIcon } from '../../assets/control-icons/index.jsx';
 
-export const SidebarFilter = ({ min = 0, max = 1500 }) => {
+export const SidebarFilter = ({ setMax, setMin, min = 0, max = 1500 }) => {
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
 
   const handleSliderChangeMax = (event) => {
-    setMaxValue(event.target.value);
+    const valorMax = parseInt(event.target.value, 10);
+    setMaxValue(valorMax);
+    setMax(valorMax);
   };
 
   const handleSliderChangeMin = (event) => {
-    setMinValue(event.target.value);
+    const valorMin = parseInt(event.target.value, 10);
+    setMinValue(valorMin);
+    setMin(valorMin);
   };
 
   return (
@@ -56,6 +60,8 @@ export const SidebarFilter = ({ min = 0, max = 1500 }) => {
 };
 
 SidebarFilter.propTypes = {
+  setMax: PropTypes.func,
+  setMin: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
 };

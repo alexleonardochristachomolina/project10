@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExpandLessIcon } from '../assets/control-icons';
 import ProductList from '../components/Products/ProductList';
 import { SidebarFilter } from '../components/SidebarFilter/index';
@@ -8,6 +8,9 @@ import SubscriptionSection from '../components/Home/SubscriptionSection';
 
 const Products = () => {
   const categories = ['Home', 'Clothings', "Men's wear", 'Summer clothing'];
+
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(1500);
   return (
     <>
       <div className="container max-w-6xl mx-auto flex flex-col gap-5">
@@ -24,10 +27,10 @@ const Products = () => {
           ))}
         </div>
         <section className="flex gap-x-3">
-          <SidebarFilter />
+          <SidebarFilter setMax={setMax} setMin={setMin} />
 
           <div className="flex-1 w-fit max-w-full">
-            <ProductList />
+            <ProductList setMax={setMax} setMin={setMin} max={max} min={min} />
           </div>
         </section>
       </div>
