@@ -8,7 +8,7 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useStore();
 
-  console.log(quantity);
+  // console.log(quantity);
   const {
     id,
     image,
@@ -33,7 +33,7 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
   };
 
   const priceFinal = (price * quantity).toFixed(2);
-  console.log(priceFinal);
+  // console.log(priceFinal);
 
   return (
     <div className="last:border-b-0 flex flex-col gap-y-4 justify-between border-b py-5 px-5 md:px-0 md:mx-5 md:flex-row">

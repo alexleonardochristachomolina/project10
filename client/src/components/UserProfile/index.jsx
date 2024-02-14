@@ -28,7 +28,7 @@ const Formulario = () => {
 
     try {
       const response = await axios.post(
-        'http://ns1.dataindev.com:8080/cellphones',
+        'http://ns1.dataindev.com:8080/ecommerce/cellphones',
         formData
       );
       if (response) {

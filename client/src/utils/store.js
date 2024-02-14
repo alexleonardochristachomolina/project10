@@ -13,10 +13,10 @@ const useStore = create((set) => ({
   fetchProducts: async (page = 0) => {
     try {
       const response = await axios.get(
-        `http://ns1.dataindev.com:8080/cellphones/allCellphones?page=${page}`
+        `http://ns1.dataindev.com:8080/ecommerce/cellphones/allCellphones?page=${page}`
       ); // Usar axios para la petición GET
 
-      console.log(response.data.content); // Acceder a los datos directamente desde response.data
+      // console.log(response.data.content); // Acceder a los datos directamente desde response.data
       set({ products: response.data.content });
 
       // Filtrar categorías únicas y actualizar el estado
@@ -34,7 +34,7 @@ const useStore = create((set) => ({
   getProductById: async (id) => {
     try {
       const response = await axios.get(
-        `http://ns1.dataindev.com:8080/cellphones/${id}`
+        `http://ns1.dataindev.com:8080/ecommerce/cellphones/${id}`
       );
       console.log(response.data);
       set({ productId: response.data });

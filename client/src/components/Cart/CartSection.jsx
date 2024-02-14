@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const CartSection = () => {
   const { cart, removeFromCart, clearCart } = useStore();
-  console.log(cart);
+  // console.log(cart);
   // Filtrar elementos duplicados por su ID
   const uniqueCart = cart.filter(
     (product, index, self) =>
