@@ -31,6 +31,8 @@ const Checkout = () => {
             type="text"
             placeholder="Add coupon"
             className="p-2 border rounded-l-md outline-none w-full"
+            id="addCoupon"
+            name="addCoupon"
           />
           <button className="text-[#0D6EFD] border rounded-r-md hover:bg-[#0D6EFD] hover:text-white py-2 px-5">
             Apply

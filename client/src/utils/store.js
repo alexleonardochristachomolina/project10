@@ -34,9 +34,9 @@ const useStore = create((set) => ({
   getProductById: async (id) => {
     try {
       const response = await axios.get(
-        `http://ns1.dataindev.com:8080/ecommerce/cellphones/${id}`
+        `http://ns1.dataindev.com:8080/ecommerce/cellphones/getCellphoneById/${id}`
       );
-      console.log(response.data);
+      // console.log(response.data);
       set({ productId: response.data });
     } catch (error) {
       console.error(`Error fetching product with id ${id}:`, error);

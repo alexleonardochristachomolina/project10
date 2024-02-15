@@ -28,8 +28,19 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
 
   const handleQuantityChange = (e) => {
     const newQuantity = Number(e.target.value);
-    setQuantity(newQuantity);
-    addToCart(prod, newQuantity);
+    if (quantity < newQuantity) {
+      const cantDeProductosAgregar = newQuantity - quantity;
+      setQuantity(newQuantity);
+      for (let i = 0; i < cantDeProductosAgregar; i++) {
+        addToCart(prod, cantDeProductosAgregar);
+      }
+    } else if (quantity > newQuantity) {
+      const cantDeProductosEliminar = quantity - newQuantity;
+      setQuantity(newQuantity);
+      for (let i = 0; i < cantDeProductosEliminar; i++) {
+        removeFromCart(id);
+      }
+    }
   };
 
   const priceFinal = (price * quantity).toFixed(2);
@@ -97,6 +108,8 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
   );
 };
 
+export default CartCardProduct;
+
 CartCardProduct.propTypes = {
   prod: PropTypes.shape({
     image: PropTypes.string.isRequired,
@@ -112,5 +125,3 @@ CartCardProduct.propTypes = {
   }).isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
-
-export default CartCardProduct;
