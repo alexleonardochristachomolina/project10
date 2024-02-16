@@ -27,7 +27,7 @@ const Register = () => {
     e.preventDefault();
 
     if ([emailRegister, passwordRegister, nombreRegister].includes('')) {
-      console.log('hay almenos uno ');
+      // console.log('hay almenos uno ');
       setMensaje('Todos los campos son obligatorios');
       setError(true);
       return;
@@ -35,7 +35,7 @@ const Register = () => {
     if (nombreRegister.length < 2 || nombreRegister.length > 30) {
       setError(true);
       setMensaje('El Nombre debe tener entre 2 y 30 caracteres.');
-      console.log(nombreRegister.length);
+      // console.log(nombreRegister.length);
       return;
     }
     if (!regexEmail.test(emailRegister)) {

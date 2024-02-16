@@ -8,7 +8,7 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useStore();
 
-  console.log(quantity);
+  // console.log(quantity);
   const {
     id,
     image,
@@ -28,12 +28,23 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
 
   const handleQuantityChange = (e) => {
     const newQuantity = Number(e.target.value);
-    setQuantity(newQuantity);
-    addToCart(prod, newQuantity);
+    if (quantity < newQuantity) {
+      const cantDeProductosAgregar = newQuantity - quantity;
+      setQuantity(newQuantity);
+      for (let i = 0; i < cantDeProductosAgregar; i++) {
+        addToCart(prod, cantDeProductosAgregar);
+      }
+    } else if (quantity > newQuantity) {
+      const cantDeProductosEliminar = quantity - newQuantity;
+      setQuantity(newQuantity);
+      for (let i = 0; i < cantDeProductosEliminar; i++) {
+        removeFromCart(id, true);
+      }
+    }
   };
 
   const priceFinal = (price * quantity).toFixed(2);
-  console.log(priceFinal);
+  // console.log(priceFinal);
 
   return (
     <div className="last:border-b-0 flex flex-col gap-y-4 justify-between border-b py-5 px-5 md:px-0 md:mx-5 md:flex-row">
@@ -97,6 +108,8 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
   );
 };
 
+export default CartCardProduct;
+
 CartCardProduct.propTypes = {
   prod: PropTypes.shape({
     image: PropTypes.string.isRequired,
@@ -112,5 +125,3 @@ CartCardProduct.propTypes = {
   }).isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
-
-export default CartCardProduct;
