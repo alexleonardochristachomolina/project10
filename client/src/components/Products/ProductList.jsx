@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   ButtonIconGroup,
   ButtonIconList,
@@ -9,8 +10,16 @@ import { ProductCard } from './ProductCard';
 import { Pagination } from '../Pagination';
 import { SelectBox } from '../SelectBox';
 
-const ProductList = () => {
-  const { products, fetchProducts } = useStore();
+const ProductList = ({ setMax, setMin, max, min }) => {
+  const {
+    products,
+    fetchProducts,
+    currentPage,
+    setCurrentPage,
+    prevPage,
+    nextPage,
+    totalPages,
+  } = useStore();
   const categories = [
     'Samsung',
     'Apple',
@@ -19,9 +28,21 @@ const ProductList = () => {
     '4 star',
     '3 star',
   ];
+
   useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+    fetchProducts(currentPage - 1);
+  }, [currentPage]);
+
+  function clearFilter(e, minV, maxV) {
+    e.preventDefault();
+    setMin(minV);
+    setMax(maxV);
+  }
+
+  const filteredProductsPrice = products.filter(
+    (product) => product.price >= min && product.price <= max
+  );
+
   return (
     <div className="flex flex-col gap-5 mb-12 w-11/12 mx-auto">
       <div className="flex items-center justify-between bg-white border border-[#DEE2E7] rounded-[6px] p-[10px]">
@@ -32,7 +53,11 @@ const ProductList = () => {
         </div>
         <div className="flex items-center justify-between w-full sm:w-fit gap-[10px]">
           <div className="hidden sm:flex items-center gap-[10px]">
-            <input type="checkbox" className="cursor-pointer" />{' '}
+            <input
+              type="checkbox"
+              id="verified-only"
+              className="cursor-pointer"
+            />{' '}
             <span>Verified only</span>
           </div>
           <select
@@ -56,6 +81,7 @@ const ProductList = () => {
           </div>
         </div>
       </div>
+      {/* Filtro categorías */}
       <ul className="flex gap-2 items-center overflow-x-auto">
         {categories.map((cat, i) => (
           <li key={i} className="inline-block">
@@ -64,19 +90,30 @@ const ProductList = () => {
             </span>
           </li>
         ))}
-        <button className="text-[#0D6EFD] hover:underline whitespace-nowrap">
+        <button
+          className="text-[#0D6EFD] hover:underline whitespace-nowrap"
+          onClick={(e) => clearFilter(e, 0, 1500)}
+        >
           Clear all filter
         </button>
       </ul>
+      {/* Lista productos */}
       <div className="grid md:grid-cols-3 gap-5">
-        {products?.map((product) => (
+        {filteredProductsPrice?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+
       <div className="flex justify-end">
         <div className="flex gap-3">
           <SelectBox />
-          <Pagination />
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            totalPages={totalPages}
+          />
         </div>
       </div>
     </div>
@@ -84,3 +121,10 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
+ProductList.propTypes = {
+  setMax: PropTypes.func,
+  setMin: PropTypes.func,
+  min: PropTypes.number,
+  max: PropTypes.number,
+};

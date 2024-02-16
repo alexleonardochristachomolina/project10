@@ -10,13 +10,13 @@ const useStore = create((set) => ({
   totalPrice: 0,
 
   // eslint-disable-next-line space-before-function-paren
-  fetchProducts: async () => {
+  fetchProducts: async (page = 0) => {
     try {
       const response = await axios.get(
-        'http://ns2.dataindev.com:8080/cellphones/allCellphones'
+        `http://ns1.dataindev.com:8080/ecommerce/cellphones/allCellphones?page=${page}`
       ); // Usar axios para la petición GET
 
-      console.log(response.data.content); // Acceder a los datos directamente desde response.data
+      // console.log(response.data.content); // Acceder a los datos directamente desde response.data
       set({ products: response.data.content });
 
       // Filtrar categorías únicas y actualizar el estado
@@ -24,11 +24,7 @@ const useStore = create((set) => ({
         ...new Set(response.data.content.map((product) => product.category)),
       ];
       set({ categories: uniqueCategories });
-
-      // Actualizar totalPages si la respuesta incluye la información
-      if (response.headers['x-total-pages']) {
-        set({ totalPages: parseInt(response.headers['x-total-pages']) });
-      }
+      set({ totalPages: response.data.totalPages });
     } catch (error) {
       console.error('Error fetching products:', error);
     }
@@ -38,9 +34,9 @@ const useStore = create((set) => ({
   getProductById: async (id) => {
     try {
       const response = await axios.get(
-        `http://ns2.dataindev.com:8080/cellphones/${id}`
+        `http://ns1.dataindev.com:8080/ecommerce/cellphones/getCellphoneById/${id}`
       );
-      console.log(response.data);
+      // console.log(response.data);
       set({ productId: response.data });
     } catch (error) {
       console.error(`Error fetching product with id ${id}:`, error);
@@ -60,15 +56,28 @@ const useStore = create((set) => ({
       totalPrice:
         state.totalPrice + (product?.price || 0) * (product.quantity || 1),
     })),
-  removeFromCart: (productId) =>
+  removeFromCart: (productId, hayCarrito) =>
     set((state) => {
-      const removedProduct = state.cart.find(
-        (product) => product.id === productId
-      );
-      return {
-        cart: state.cart.filter((product) => product.id !== productId),
-        totalPrice: state.totalPrice - (removedProduct?.price || 0),
-      };
+      const hay = !!hayCarrito;
+      if (hay) {
+        const removedProduct = state.cart.find(
+          (product) => product.id === productId
+        );
+        const indiceProducto = state.cart.findIndex((p) => p.id === productId);
+        state.cart.splice(indiceProducto, 1);
+        return {
+          cart: state.cart,
+          totalPrice: state.totalPrice - (removedProduct?.price || 0),
+        };
+      } else {
+        const removedProduct = state.cart.find(
+          (product) => product.id === productId
+        );
+        return {
+          cart: state.cart.filter((product) => product.id !== productId),
+          totalPrice: state.totalPrice - (removedProduct?.price || 0),
+        };
+      }
     }),
   clearCart: () => set({ cart: [], totalPrice: 0 }),
 }));

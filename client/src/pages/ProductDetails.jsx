@@ -26,7 +26,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="container max-w-6xl p-3 flex flex-col gap-5">
+    <div className="container max-w-6xl mx-auto p-3 flex flex-col gap-5">
       <SellerInformationPanel productId={productId} />
       <DescriptionSection />
       <FavoriteProducts products={products} />

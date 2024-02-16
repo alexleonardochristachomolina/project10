@@ -22,6 +22,7 @@ const SubscriptionSection = () => {
             name="email"
             placeholder="Email"
             className="p-2 pl-11 min-w-full w-64 rounded-md"
+            autoComplete="off"
           />
         </div>
         <button className="bg-customBlue text-white px-4 py-2 rounded-md">

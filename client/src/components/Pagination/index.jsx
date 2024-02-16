@@ -1,41 +1,37 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { ChevronLeft, ChevronRight } from '../../assets/left-right-chevron';
 
-export const Pagination = () => {
-  const pageDefault = 1;
-  const [num, setNum] = useState(pageDefault);
-  const [cur, setCur] = useState(pageDefault);
-
+export const Pagination = ({
+  currentPage,
+  setCurrentPage,
+  nextPage,
+  prevPage,
+  totalPages,
+}) => {
   const pages = [
-    { page: num },
-    { page: num + 1 },
-    { page: num + 2 },
-    { page: num + 3 },
+    currentPage,
+    currentPage + 1,
+    currentPage + 2,
+    currentPage + 3,
   ];
-
-  const Next = () => {
-    setNum(num + 1);
-  };
-
-  const Previous = () => {
-    num > 1 && setNum(num - 1);
-  };
-
   return (
     <>
       <div className="flex flex-1 justify-between sm:hidden">
-        <a
-          href="#"
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        <button
+          disabled={currentPage === 1}
+          onClick={prevPage}
+          className="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Anterior
-        </a>
-        <a
-          href="#"
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        </button>
+
+        <button
+          onClick={nextPage}
+          className="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Siguiente
-        </a>
+        </button>
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
@@ -44,31 +40,36 @@ export const Pagination = () => {
             aria-label="Pagination"
           >
             <button
-              onClick={Previous}
+              disabled={currentPage === 1}
+              onClick={prevPage}
               className="rounded-l-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Anterior</span>
               <ChevronLeft />
             </button>
 
-            {pages.map((e, index) => (
+            {pages.map((page, index) => (
               <button
+                disabled={page > totalPages}
                 key={index}
-                onClick={() => setCur(e.page)}
+                onClick={() => {
+                  setCurrentPage(page);
+                }}
                 className={`relative w-11 py-2 text-base font-medium text-[#1C1C1C] ring-1 ring-inset ring-gray-300 
                 ${
-                  cur === e.page
+                  currentPage === page
                     ? 'bg-[#DEE2E7] text-[#8B96A5]'
                     : 'hover:bg-gray-100 focus:z-20 focus:outline-offset-0'
                 }
                 `}
               >
-                {e.page}
+                {page}
               </button>
             ))}
 
             <button
-              onClick={Next}
+              disabled={currentPage >= totalPages}
+              onClick={nextPage}
               className="rounded-r-md px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Siguiente</span>
