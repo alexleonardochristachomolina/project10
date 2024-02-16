@@ -56,15 +56,28 @@ const useStore = create((set) => ({
       totalPrice:
         state.totalPrice + (product?.price || 0) * (product.quantity || 1),
     })),
-  removeFromCart: (productId) =>
+  removeFromCart: (productId, hayCarrito) =>
     set((state) => {
-      const removedProduct = state.cart.find(
-        (product) => product.id === productId
-      );
-      return {
-        cart: state.cart.filter((product) => product.id !== productId),
-        totalPrice: state.totalPrice - (removedProduct?.price || 0),
-      };
+      const hay = !!hayCarrito;
+      if (hay) {
+        const removedProduct = state.cart.find(
+          (product) => product.id === productId
+        );
+        const indiceProducto = state.cart.findIndex((p) => p.id === productId);
+        state.cart.splice(indiceProducto, 1);
+        return {
+          cart: state.cart,
+          totalPrice: state.totalPrice - (removedProduct?.price || 0),
+        };
+      } else {
+        const removedProduct = state.cart.find(
+          (product) => product.id === productId
+        );
+        return {
+          cart: state.cart.filter((product) => product.id !== productId),
+          totalPrice: state.totalPrice - (removedProduct?.price || 0),
+        };
+      }
     }),
   clearCart: () => set({ cart: [], totalPrice: 0 }),
 }));

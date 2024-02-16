@@ -38,7 +38,7 @@ const CartCardProduct = ({ prod, removeFromCart }) => {
       const cantDeProductosEliminar = quantity - newQuantity;
       setQuantity(newQuantity);
       for (let i = 0; i < cantDeProductosEliminar; i++) {
-        removeFromCart(id);
+        removeFromCart(id, true);
       }
     }
   };
